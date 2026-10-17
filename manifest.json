@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Bhuvan Photo Collector",
+  "version": "1.0.0",
+  "description": "Collect project photos from open Bhuvan-BHUGRAM asset details.",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "scripting",
+    "storage",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://bhuvan-app2.nrsc.gov.in/bhugram/*",
+    "https://bhuvan-app2.nrsc.gov.in/nrega_fdc/*",
+    "https://bhuvan-fdc1.nrsc.gov.in/*",
+    "https://bhuvan-vec3.nrsc.gov.in/*",
+    "https://tessdata.projectnaptha.com/*"
+  ],
+  "action": {
+    "default_title": "Bhuvan Photo Collector",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; connect-src 'self' https://bhuvan-app2.nrsc.gov.in https://bhuvan-fdc1.nrsc.gov.in https://bhuvan-vec3.nrsc.gov.in https://tessdata.projectnaptha.com;"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://bhuvan-app2.nrsc.gov.in/bhugram/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

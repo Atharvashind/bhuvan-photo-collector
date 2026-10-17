@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bhuvan Photo Collector</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="eyebrow">BHUGRAM / FIELD PHOTOS</div>
+        <h1>Photo collector</h1>
+      </header>
+
+      <section class="capture-section">
+        <p id="page-state">Select a state, district, and block on Bhuvan, then collect that block's asset photos.</p>
+        <button id="scan-block" class="primary" type="button">Collect selected block</button>
+        <progress id="scan-progress" max="1" value="0" hidden></progress>
+        <div id="notice" role="status" aria-live="polite"></div>
+        <button id="capture" class="secondary" type="button">Capture open photo instead</button>
+      </section>
+
+      <section class="collection-section" aria-labelledby="collection-title">
+        <div class="section-heading">
+          <h2 id="collection-title">Collected</h2>
+          <span id="count">0</span>
+        </div>
+        <div id="items" class="items"></div>
+        <div class="actions">
+          <button id="download" type="button" disabled>Download photos</button>
+          <button id="clear" class="text-button" type="button" disabled>Clear list</button>
+        </div>
+      </section>
+
+      <section class="board-section" aria-labelledby="board-title">
+        <div class="section-heading">
+          <h2 id="board-title">Board photos</h2>
+          <span id="board-count">0</span>
+        </div>
+        <p class="board-description">Find photos with readable signboard text using Marathi and English OCR.</p>
+        <button id="analyze-boards" class="secondary full-width" type="button" disabled>Analyze collected photos</button>
+        <progress id="board-progress" max="1" value="0" hidden></progress>
+        <div id="board-items" class="items"></div>
+        <button id="download-boards" class="board-download" type="button" disabled>Download board photos</button>
+        <button id="clear-boards" class="text-button" type="button" disabled>Clear board results</button>
+      </section>
+
+      <footer>Files are saved under Downloads/Bhuvan/state/district.</footer>
+    </main>
+    <script src="vendor/tesseract.min.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
